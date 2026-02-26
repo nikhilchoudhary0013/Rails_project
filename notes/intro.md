@@ -50,3 +50,17 @@ false
 
 show error:- product.errors 
 full error message:- product.errors.full_messages ["Name can't be blank "]
+
+Routs:- Part of the URL 
+https://example.org/products?sale=true&sort=asc
+
+https:- protocol,
+example.org:- host,
+/product:- path,
+?sale=true&sort=asc:-query parameters.
+
+http methods and their purpose:-
+GET:-retrive the data for a given url.
+POST:- submit the data.
+PUT PATCH:-submits data to a URL to update an existing record
+DELETE:- delete the data.
