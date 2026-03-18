@@ -1,14 +1,26 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>RailsProject</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
   <body>
     <nav style="background-color: red; padding: 20px; display:flex;">
-      <%= link_to "Home" , root_path %>
-      <%= button_to "Log out" ,session_path, method: :delete if authenticated? %>
+      <%= link_to "Home", root_path %>
+      <%= button_to "Log out", session_path, method: :delete if authenticated? %>
     </nav>
+
     <div class="notice"><%= flash[:notice] %></div>
     <div class="alert"><%= flash[:alert] %></div>
+
     <main>
-     <%= yield %>
+      <%= yield %>
     </main> 
   </body>
 </html>
