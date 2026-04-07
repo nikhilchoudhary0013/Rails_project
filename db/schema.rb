@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2026_03_06_103417) do
+ActiveRecord::Schema[8.1].define(version: 2026_04_07_081846) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.text "body"
     t.datetime "created_at", null: false
@@ -49,11 +49,72 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_06_103417) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "authors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "book_orders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "books", force: :cascade do |t|
+    t.string "autheor"
+    t.integer "author_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "published_at"
+    t.string "title"
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "entries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.integer "entryable_id"
+    t.string "entryable_type"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.string "body"
+    t.datetime "created_at", null: false
+    t.string "subject"
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "new_products", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.string "name"
+    t.string "part_number"
+    t.datetime "updated_at", null: false
+  end
+
   create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.integer "inventory_count"
     t.string "name"
+    t.decimal "price"
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_products_on_user_id"
+  end
+
+  create_table "products_users", id: false, force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "user_id", null: false
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -78,11 +139,20 @@ ActiveRecord::Schema[8.1].define(version: 2026_03_06_103417) do
     t.string "email_address", null: false
     t.string "password_digest", null: false
     t.datetime "updated_at", null: false
+    t.string "username"
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
-  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  create_table "vehicles", force: :cascade do |t|
+    t.string "color"
+    t.datetime "created_at", null: false
+    t.decimal "price", precision: 10, scale: 2
+    t.string "type"
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "books", "authors"
+  add_foreign_key "products", "users"
   add_foreign_key "sessions", "users"
   add_foreign_key "subscribers", "products"
 end
