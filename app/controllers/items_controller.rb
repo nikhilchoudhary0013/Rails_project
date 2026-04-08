@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  allow_unauthenticated_access only: %i[ index show ]
   before_action :set_item, only: %i[ show edit update destroy ]
 
   # GET /items or /items.json
@@ -8,6 +9,7 @@ class ItemsController < ApplicationController
 
   # GET /items/1 or /items/1.json
   def show
+    @item = Item.find(params[:id])
   end
 
   # GET /items/new
@@ -65,6 +67,6 @@ class ItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def item_params
-      params.fetch(:item, {})
+      params.fetch(:item, [:name])
     end
 end

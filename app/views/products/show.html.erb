@@ -6,6 +6,7 @@
   <section class="product-info">
     <% cache @product do %>
       <h1><%= @product.name %></h1>
+      <%= @product.price %>
       <%= @product.description %>
     <% end %>
 
