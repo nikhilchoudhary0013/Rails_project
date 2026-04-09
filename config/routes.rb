@@ -6,30 +6,31 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
+  # get "up" => "rails/health#show", as: :rails_health_check
 
-  get "/products", to: "products#index"
+  # get "/products", to: "products#index"
 
-  get "/products/new", to: "products#new"
-  post "/products", to: "products#create"
+  # get "/products/new", to: "products#new"
+  # post "/products", to: "products#create"
 
-  get "/products/:id", to: "products#show"
+  # get "/products/:id", to: "products#show"
 
-  get "/products/:id/edit", to: "products#edit"
-  patch "/products/:id", to: "products#update"
-  put "/products/:id", to: "products#update"
+  # get "/products/:id/edit", to: "products#edit"
+  # patch "/products/:id", to: "products#update"
+  # put "/products/:id", to: "products#update"
 
-  delete "/products/:id", to: "products#destroy"
+  # delete "/products/:id", to: "products#destroy"
 
   # ...
   
-  root "products#index"
-  resources :products
+  root "items#index"
+  # resources :products
+  resource :items
 
-  resources :products do 
-  resources :subscribers, only: [ :create ]
-  end
-  resource :unsubscribe, only: [ :show ]
+  # resources :products do 
+  # resources :subscribers, only: [ :create ]
+  # end
+  # resource :unsubscribe, only: [ :show ]
 
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
