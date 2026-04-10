@@ -1,1 +1,14 @@
+<p><%= link_to "Back",items_path %><p>
 <h1>Show Item</h1>
+
+<section class="items-info">
+    <% cache @item do %>
+      <h1><%= @item.name %></h1>
+    <% end %>
+
+    
+
+    <% if authenticated? %>
+      <%= link_to "Edit", edit_item_path(@item) %>
+    <% end %>
+  </section>
