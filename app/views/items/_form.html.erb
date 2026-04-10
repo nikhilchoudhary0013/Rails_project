@@ -1,0 +1,14 @@
+<p><%= link_to "Back", items_path %></p>
+
+<h1>New item</h1>
+
+<%= form_with model: item do |form| %>
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

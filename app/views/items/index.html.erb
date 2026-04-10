@@ -1,0 +1,18 @@
+<h1>Listing Items</h1>
+
+
+<table class="items">
+
+  <div>
+    <% @items.each do |item| %>
+      <div>
+        <a href="/items/ <%= item.id %>">
+        <%= item.name %>
+      </div>
+    <% end %>
+  </div>
+</table>
+
+<br>
+
+<%= link_to "New item", new_item_path %>
