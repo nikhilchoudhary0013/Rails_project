@@ -44,3 +44,58 @@ If we want to display the properties of all the items in our view, we can do so 
 <%= link_to "New item", new_book_path %>
 ```
 **1. render:-**In most cases, the controller's render method does the heavy lifting of rendering your application's content for use by a browser.
+
+*Using render with :inline:-
+```
+render inline: "<% products.each do |p| %><p><%= p.name %></p><% end %>"
+```
+*Rendering Text:-
+```
+render plain: "OK"
+```
+*Rendering HTML:-
+```
+render html: helpers.teg.strong("Not" Found)
+```
+*Rendering JSON:-
+```
+render json: @item
+```
+*Rendering XML:-
+```
+render xml: @item
+```
+*Rendering JavaScript:-
+```
+render js: "alert('Hello Rails');"
+```
+*Rendering Object:-
+```
+class Greeting
+  def render_in(view_context)
+    view_context.render html: "Hello, World"
+  end
+
+  def format
+    :html
+  end
+end
+
+render Greeting.new
+ "Hello World"
+```
+**Option for Render:-**
+
+ Calls to the render method generally accept six options:
+
+*`:content_type`
+*`:layout`
+*`:location`
+*`:status`
+*`:formats`
+*`:variants`
+
+**2. Redirect_to:-**Another way to handle returning responses to an HTTP request is with redirect_to.
+```
+redirect_to :index
+```
