@@ -55,5 +55,8 @@ section.product img {
   max-width: 50%;
 }
 #products{
-  background-color: aqua;
+  background-color: rgb(242, 242, 171);
+}
+.items{
+  background-color: aliceblue;
 }
