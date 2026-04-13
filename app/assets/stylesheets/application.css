@@ -8,3 +8,59 @@
  *
  * Consider organizing styles into separate files for maintainability.
  */
+/* app/assets/stylesheets/application.css */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(239, 225, 142);
+  padding: 1rem;
+}
+
+nav {
+  justify-content: flex-end;
+  display: flex;
+  font-size: 0.875em;
+  gap: 0.5rem;
+  max-width: 1024px;
+  width:960px;
+  
+
+}
+
+nav a {
+  display: inline-block;
+}
+
+main {
+  max-width: 1024px;
+}
+
+.alert,
+.error {
+  color: red;
+}
+
+.notice {
+  color: green;
+}
+
+section.product {
+  display: flex;
+  flex-direction: row;
+}
+
+section.product img {
+  border-radius: 8px;
+  flex-basis: 50%;
+  max-width: 50%;
+}
+#products{
+  background-color: rgb(242, 242, 171);
+}
+.item1{
+  width:1000px;
+  background-color: antiquewhite;
+}
+#h1{
+  color: rgb(220, 55, 220);
+  margin: 0;
+}
