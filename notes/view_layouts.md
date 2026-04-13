@@ -99,3 +99,6 @@ render Greeting.new
 ```
 redirect_to :index
 ```
+**3. head:-** Call head to create a response consisting solely of HTTP headers to send back to the browser(only status).
+
+
